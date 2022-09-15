@@ -149,3 +149,8 @@ class NN():
         print("Accuracy: "  + str(np.sum((predictions == Y)/m)))
         return predictions
 
+    def __str__(self):
+        print('Model Architecture:')
+        print('\tInput layer - {} units'.format(self.layers_dimensions[0]))
+        for layer in range(1,len(self.layers_dimensions)):
+            print('\tLayer_{} - {} units'.format(layer, self.layers_dimensions[layer]))
