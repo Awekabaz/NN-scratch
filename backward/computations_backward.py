@@ -20,7 +20,7 @@ def get_derivative_respect_to_activation(A: np.array, Y: np.array, name: str = '
     dA = derivative(A, Y)
     return dA
 
-def linear_activation_backward(dA: np.array, cache: Tuple[Tuple, np.array], name: str = 'relu') -> Tuple(np.array):
+def linear_activation_backward(dA: np.array, cache: Tuple[Tuple, np.array], name: str = 'relu') -> Tuple[np.array]:
     """Helper function to compute backpropagation.
     
     Arguments:
