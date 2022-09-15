@@ -35,7 +35,7 @@ def relu_backward(dA, cache):
     """
     Z = cache
     dZ = np.array(dA, copy=True)
-        
+    dZ[Z <= 0] = 0
     assert (dZ.shape == Z.shape)
     
     return dZ

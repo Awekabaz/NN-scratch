@@ -14,12 +14,10 @@ def linear_activation_backward(dA: np.array, cache: Tuple[Tuple, np.array], name
     backward_activation = backward_activation_functions[name]
 
     dZ = backward_activation(dA, activation_cache)
-
-
+    
     A_previous, W, b = linear_cache
     m = A_previous.shape[1]
 
-    
     dW = np.dot(dZ, A_previous.T) / m
     db = np.sum(dZ, axis=1, keepdims=True) / m
     dA_previous = np.dot(W.T, dZ)
