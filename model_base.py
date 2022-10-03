@@ -122,8 +122,8 @@ class NN():
             self.gradients['db'+str(l+1)] = grads[1]
             self.gradients['dA'+str(l)] = grads[2]
 
-    def update_parameters(self) -> NoReturn:
-        """Function to update parameters, gradient descent.
+    def update_parameters_gradient(self) -> NoReturn:
+        """Method to update parameters, gradient descent.
         """
         L = len(self.parameters)
         for l in range(L):
@@ -133,7 +133,18 @@ class NN():
             self.parameters['layer'+str(l+1)][1] = self.parameters['layer'+str(l+1)][1] \
                 - self.learning_rate*self.gradients['db'+str(l+1)]
 
-    def predict(self, X: np.array, Y, treshold: float = 0.5):
+    def predict(self, X: np.array, Y: np.array, treshold: float = 0.5) -> np.array:
+        """Method to predict using updated parameters.
+        Arguments:
+        ----------
+        X -- array of data points, shape of (input size, number of datapoints[m])
+        Y -- array of ground truths, shape of (1, number of datapoints[m])
+
+        Returns:
+        ----------
+       predictions -- predicted values, shape of (1, number of datapoints)
+
+        """
         m = X.shape[1]
         L = len(self.parameters)
         predictions = np.zeros((1,m))
