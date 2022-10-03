@@ -1,10 +1,13 @@
 import numpy as np
 from itertools import chain
+from typing import Dict, List
 
 def generate_seq(ceil):
-    None
+    return None
 
-def flatten_vector(parameters):
+def flatten_vector(parameters: Dict[str, float]) -> List[float]:
+    """Function used to flatten dictionary into a single list.
+    """
     flattened = list(chain(*parameters.values()))
     count = 0
 
@@ -19,6 +22,9 @@ def flatten_vector(parameters):
     return final_vector
 
 def check_backprop(parameters, gradients, X, Y, epsilon = 1e-7):
+    """Function used to check the implemntation of Backprop.
+    Using vanilla numerical method: compute derivative of Cost Function and compare to base gradient vector.
+    """
     parameters_values = flatten_vector(parameters)
 
     grad = flatten_vector(gradients)
